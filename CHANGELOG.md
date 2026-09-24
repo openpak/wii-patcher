@@ -3,9 +3,20 @@
 Generated from git history on 2026-09-15. `git log` stays the source
 of truth; this file is the readable summary.
 
+## Unreleased
+
+- ci: release builds on `v*.*.*` tags only (was `openpak-v*`), artifacts kept 3 days
+  [ee7bce6, bf37c89]; docs commits
+
+## openpak-v0.1.1 — 2026-09-10
+
+- release: python3-cryptography and zip from apt, gh from GitHub's apt repo (the devkitppc
+  image has no pip) [6fb683b]
+
 ## openpak-v0.1.0 — 2026-09-10
 
-
+- OpenPak: openpak.org domain, our payload signing key (public half only), release workflow
+  with launcher, gecko codes and signed payloads [1bcdbdd]
 
 ## payload-0.3.1 — 2026-08-26
 
