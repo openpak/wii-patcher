@@ -14,10 +14,10 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     container: devkitpro/devkitppc:latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: apt-get update -qq && apt-get install -y -qq python3-cryptography zip >/dev/null
       - run: printf '%s' "$KEY" > misc/private-key-OUT.pem
         env:
