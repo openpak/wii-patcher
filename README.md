@@ -11,7 +11,7 @@ Fork of WiiLink's `wfc-patcher-wii` (BSD-style or GPL-2.0+, as upstream). Built 
   `WFC_PAYLOAD_PRIVATE_KEY` secret; its public half is `include/wwfcPayloadPublicKey.hpp`.
 
 The console still resolves `*.openpak.org` through DNS, so point the Wii at
-[`nn-sssl-dns`](../nn-sssl-dns) or publish records. Releases on `vX.Y.Z` tags. Not yet run
+[`nn-sssl-dns`](../../../wiiu-3ds/infra/nn-sssl-dns) or publish records. Releases on `vX.Y.Z` tags. Not yet run
 on hardware.
 
 ---
