@@ -56,3 +56,6 @@ launcher/build
 *.pem
 misc/wwfcPayloadPublicKey-OUT.hpp
 dist/
+
+# Python bytecode
+__pycache__/
