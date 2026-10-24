@@ -1,4 +1,4 @@
-# OpenPak nn-wfc-patcher-wii — the Wii's client side for OpenPak WFC
+# OpenPak Wii Patcher — the Wii's client side for OpenPak WFC
 
 Fork of WiiLink's `wfc-patcher-wii` (BSD-style or GPL-2.0+, as upstream). Built for
 `openpak.org` (same-length swap for `nintendowifi.net`, so every patched string fits):
