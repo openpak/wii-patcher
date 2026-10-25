@@ -1,59 +1,46 @@
-# OpenPak Wii Patcher — the Wii's client side for OpenPak WFC
+# Wii Patcher
 
-Fork of WiiLink's `wfc-patcher-wii` (BSD-style or GPL-2.0+, as upstream). Built for
-`openpak.org` (same-length swap for `nintendowifi.net`, so every patched string fits):
+OpenPak's Wii Patcher.
 
-- **launcher** (`openpak-wfc-launcher.dol`): the Wii's setup file, the counterpart of
-  `openpak.nro`. Boots a disc with the stage-0 patch applied.
-- **stage 0** gecko codes per game (`openpak-wfc-gecko-codes.zip`) for USB loaders and Riivolution.
-- **stage 1 / stage 2 payloads** (`wfc-payload-openpak.tar.gz`): the server hands these out;
-  unpack into `nn-wfc`'s `payload/` directory. Stage 2 is RSA-signed with the key in the
-  `WFC_PAYLOAD_PRIVATE_KEY` secret; its public half is `include/wwfcPayloadPublicKey.hpp`.
+| | |
+| --- | --- |
+| Console | Wii |
+| Kind | Patcher: launcher (`openpak-wfc-launcher.dol`), gecko codes and stage payloads |
+| Download | [Releases](https://github.com/openpak/wii-patcher/releases) (`vX.Y.Z` tags) |
+| Based on | [WiiLink `wfc-patcher-wii`](https://wfc.wiilink.ca) (custom BSD-style or GPL-2.0-or-later, as upstream) |
+| Licence | Custom BSD-style or GPL-2.0-or-later, as upstream; see [LICENSE](LICENSE) |
 
-The console still resolves `*.openpak.org` through DNS, so point the Wii at
-[`nn-sssl-dns`](../../../wiiu-3ds/infra/nn-sssl-dns) or publish records. Releases on `vX.Y.Z` tags. Not yet run
-on hardware.
+## What it does
 
----
+- Builds the launcher (`openpak-wfc-launcher.dol`), the Wii's setup file, which boots a disc with the stage 0 patch applied.
+- Ships stage 0 gecko codes per game (`openpak-wfc-gecko-codes.zip`) for USB loaders and Riivolution.
+- Hands out stage 1 and stage 2 payloads (`wfc-payload-openpak.tar.gz`) that the console downloads; stage 2 is RSA-signed.
+- Resolves `*.openpak.org` through DNS, so the console needs a DNS entry that points there.
 
-# WiiLink WFC Patcher
-WiiLink Wi-Fi Connection aims to be an open source server replacement for Nintendo Wi-Fi Connection.
-This repository includes the client side patches necessary for connecting to WWFC.
+## Install
 
-The repository is split into the following directories:
+1. Unpack `wfc-payload-openpak.tar.gz` into the `payload/` directory of `nn-wfc`.
+2. Point the Wii at `*.openpak.org` through DNS, see [deploy](docs/deploy.md).
 
-* [patch](patch) - The initial 'stage 0' patch made to the game to connect to WWFC.
-* [stage1](stage1) - The non-game-specific stage 1 payload downloaded by the initial patch.
-* [payload](payload) - The final stage 2 payload downloaded and verified by stage 1. This is a game-specific payload
-that makes patches to the running game, including important security patches and general improvements to the game's code.
+## Build
 
-Each directory includes its own README file with more detailed information on the section.
-
-# Building
-
-You need:
-
-- Python 3.11+ with the `cryptography` module
-- devkitPPC
-- A domain name under which your WWFC server will be reachable (`${DOMAIN}`)
-
-To build everything, run the make script:
+Needs devkitPPC and Python 3.11+ with the `cryptography` module.
 
 ```sh
 ./make.sh --all -- -j8 -DWWFC_DOMAIN=\"${DOMAIN}\"
 ```
 
-The script will create a directory `dist/` which contains the payload files necessary to run the server. Copy those files into a `payload/` directory located next to your `wwfc` binary.
+The output lands in `dist/`. The long form is in [upstream](docs/upstream.md#building).
 
-The gecko codes will be located in the `patch/build/` directory as `.txt` files.
+## Docs
 
-# License
-Unless a file explicitly states otherwise, everything in this repository is licensed under a custom BSD-style
-license detailed in the [LICENSE](LICENSE) file. The purpose of this license is to allow easy integration into
-permissively licensed projects, while requiring strict attribution to discourage implementation into the existing
-closed-source, proprietary environment.
+- [Protocol](docs/protocol.md)
+- [Evidence](docs/evidence.md)
+- [Deploy](docs/deploy.md)
+- [Notes](docs/notes.md)
+- [Upstream README](docs/upstream.md)
+- [Docs index](docs/README.md)
 
-The above license may not be compatible with copyleft licenses such as the GPL. For this reason, this software
-is also made available under the GNU General Public License version 2 (or any later version). You may choose the terms
-of the above license or the GPL, but not both. A copy of the GPL version 2 is available online at:
-https://www.gnu.org/licenses/gpl-2.0
+## Licence
+
+Custom BSD-style licence from WiiLink, see [LICENSE](LICENSE). The upstream README also offers GPL-2.0-or-later as an alternative, see [upstream](docs/upstream.md#license).
