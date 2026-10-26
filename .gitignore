@@ -59,3 +59,4 @@ dist/
 
 # Python bytecode
 __pycache__/
+next-session.md
