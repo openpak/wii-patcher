@@ -61,3 +61,6 @@ dist/
 __pycache__/
 next-session.md
 NEXT-SESSION.md
+
+# dev signing key (stays on disk, never tracked)
+misc/private-key-dev.pem

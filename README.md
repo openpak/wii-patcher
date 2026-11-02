@@ -32,6 +32,8 @@ Needs devkitPPC and Python 3.11+ with the `cryptography` module.
 
 The output lands in `dist/`. The long form is in [upstream](docs/upstream.md#building).
 
+Signing keys are never tracked. Run `./make.sh --keys` once to generate a fresh `misc/private-key-OUT.pem` and the matching public key header (both gitignored). Nothing in the build or tests uses a checked-in dev key.
+
 ## Docs
 
 - [Protocol](docs/protocol.md)
