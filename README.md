@@ -35,7 +35,6 @@ The output lands in `dist/`. The long form is in [upstream](docs/upstream.md#bui
 ## Docs
 
 - [Protocol](docs/protocol.md)
-- [Evidence](docs/evidence.md)
 - [Deploy](docs/deploy.md)
 - [Notes](docs/notes.md)
 - [Upstream README](docs/upstream.md)
