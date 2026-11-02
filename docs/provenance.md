@@ -1,3 +1,9 @@
+# Provenance
+
+Based on [WiiLink `wfc-patcher-wii`](https://wfc.wiilink.ca) (custom BSD-style or GPL-2.0-or-later, as upstream). License as upstream; see LICENSE. The upstream README follows verbatim.
+
+---
+
 # WiiLink WFC Patcher
 WiiLink Wi-Fi Connection aims to be an open source server replacement for Nintendo Wi-Fi Connection.
 This repository includes the client side patches necessary for connecting to WWFC.

@@ -19,7 +19,7 @@ OpenPak's Wii Patcher.
 
 ## Install
 
-1. Unpack `wfc-payload-openpak.tar.gz` into the `payload/` directory of `nn-wfc`.
+1. Unpack `wfc-payload-openpak.tar.gz` into the `payload/` directory of `wfc-nas`.
 2. Point the Wii at `*.openpak.org` through DNS, see [deploy](docs/deploy.md).
 
 ## Build
@@ -30,7 +30,7 @@ Needs devkitPPC and Python 3.11+ with the `cryptography` module.
 ./make.sh --all -- -j8 -DWWFC_DOMAIN=\"${DOMAIN}\"
 ```
 
-The output lands in `dist/`. The long form is in [upstream](docs/upstream.md#building).
+The output lands in `dist/`. The long form is in [provenance](docs/provenance.md#building).
 
 Signing keys are never tracked. Run `./make.sh --keys` once to generate a fresh `misc/private-key-OUT.pem` and the matching public key header (both gitignored). Nothing in the build or tests uses a checked-in dev key.
 
@@ -38,10 +38,10 @@ Signing keys are never tracked. Run `./make.sh --keys` once to generate a fresh 
 
 - [Protocol](docs/protocol.md)
 - [Deploy](docs/deploy.md)
-- [Notes](docs/notes.md)
-- [Upstream README](docs/upstream.md)
-- [Docs index](docs/README.md)
+- [Provenance](docs/provenance.md)
 
 ## Licence
 
-Custom BSD-style licence from WiiLink, see [LICENSE](LICENSE). The upstream README also offers GPL-2.0-or-later as an alternative, see [upstream](docs/upstream.md#license).
+Custom BSD-style licence from WiiLink, see [LICENSE](LICENSE). The upstream README also offers GPL-2.0-or-later as an alternative, see [provenance](docs/provenance.md#license).
+
+PRDs: openpak/prds (private)
