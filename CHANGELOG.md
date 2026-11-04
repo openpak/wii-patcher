@@ -3,7 +3,11 @@
 Generated from git history on 2026-09-15. `git log` stays the source
 of truth; this file is the readable summary.
 
-## Unreleased
+## v0.1.2 — 2026-11-04
+
+- Stage-0 rows for Call of Duty 3 (PAL), Final Fantasy Crystal Chronicles: Echoes of Time (PAL) and Tetris Party Deluxe
+- The dev signing key is no longer tracked
+- The per-console patchers renamed; docs point at docs.openpak.org; docs trimmed to README + protocol + deploy (variant-DWC findings and the objdump recipe folded in)
 
 - ci: release builds on `v*.*.*` tags only (was `openpak-v*`), artifacts kept 3 days
   [ee7bce6, bf37c89]; docs commits
