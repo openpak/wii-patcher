@@ -24,8 +24,17 @@ jobs:
           KEY: ${{ secrets.WFC_PAYLOAD_PRIVATE_KEY }}
       - run: ./make.sh --all -- -j$(nproc) -DPROD
       - run: (cd launcher && make -j$(nproc))
+      - name: host test of the network-settings logic
+        run: apt-get install -y -qq g++ >/dev/null && app/tests/run.sh
+      - run: (cd app && make APP_VERSION=${GITHUB_REF_NAME#v})
       - run: |
           mkdir -p out && tar czf out/wfc-payload-openpak.tar.gz -C dist . && cp launcher/launcher.dol out/openpak-wfc-launcher.dol
+          V=${GITHUB_REF_NAME#v}; D=$(date -u +%Y%m%d%H%M%S)
+          mkdir -p pkg/apps/openpak-wii-patcher pkg/apps/openpak-wfc-launcher
+          cp app/boot.dol pkg/apps/openpak-wii-patcher/boot.dol; cp app/meta/icon.png pkg/apps/openpak-wii-patcher/icon.png
+          sed -e "s/VERSION/$V/" -e "s/DATE/$D/" app/meta/meta.xml > pkg/apps/openpak-wii-patcher/meta.xml
+          cp launcher/launcher.dol pkg/apps/openpak-wfc-launcher/boot.dol; cp launcher/meta/icon.png launcher/meta/meta.xml pkg/apps/openpak-wfc-launcher/
+          (cd pkg && zip -qr ../out/OpenPak-Wii-Patcher.zip apps)
           (cd patch/build && zip -q ../../out/openpak-wfc-gecko-codes.zip *.txt)
           ls -la out
       - uses: actions/upload-artifact@v4

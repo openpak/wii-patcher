@@ -229,7 +229,7 @@ int main(int argc, char** argv)
     std::printf("\x1b[%d;%dH", 2, 0);
 
     // Print logo
-    std::printf("WiiLink WFC Launcher\n\n");
+    std::printf("OpenPak WFC Launcher\n\n");
 
     // Initialize DI
     if (!DI::Init()) {

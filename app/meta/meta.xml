@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<app version="1">
+    <name>OpenPak Wii Patcher</name>
+    <coder>OpenPak</coder>
+    <version>VERSION</version>
+    <release_date>DATE</release_date>
+    <short_description>Switch the Wii to OpenPak</short_description>
+    <long_description>Switches the Wii's active connection to OpenPak and back to the official network.
+Backs up your connection settings first and restores them exactly.
+
+openpak.org</long_description>
+</app>

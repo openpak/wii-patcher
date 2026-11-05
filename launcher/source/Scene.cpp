@@ -139,7 +139,7 @@ static void LayoutCalc()
     case Apploader::State::UNSUPPORTED_GAME:
         s_loadingIcon.StopAnimation();
         s_textBox.m_visible = true;
-        s_textBox.SetNextText(L"This game is not supported by WiiLink WFC.");
+        s_textBox.SetNextText(L"This game is not supported by OpenPak.");
         break;
 
     case Apploader::State::FATAL_ERROR:

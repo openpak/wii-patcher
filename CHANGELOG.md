@@ -3,6 +3,17 @@
 Generated from git history on 2026-09-15. `git log` stays the source
 of truth; this file is the readable summary.
 
+## v0.2.0 — 2026-11-05
+
+- New Homebrew Channel app "OpenPak Wii Patcher" (`OpenPak-Wii-Patcher.zip`, extract to the SD card root):
+  one screen with the Switch Patcher's wording (OPENPAK / NINTENDO pill, Nintendo and OpenPak rows,
+  "Reboot to apply?"). Selecting OpenPak backs up the Wii's network settings
+  (`/shared2/sys/net/02/config.dat`) to the SD card, sets the active connection's DNS to OpenPak's
+  resolver and verifies it; Nintendo puts the saved file back exactly. An older OpenPak setup gets
+  "OpenPak update available. Install it?", and No offers to switch back.
+- The WFC launcher is rebranded OpenPak (HBC name, author, on-screen text).
+- Not hardware tested; the self-update check is not implemented (no TLS stack in the app).
+
 ## v0.1.2 — 2026-11-04
 
 - Stage-0 rows for Call of Duty 3 (PAL), Final Fantasy Crystal Chronicles: Echoes of Time (PAL) and Tetris Party Deluxe

@@ -64,3 +64,7 @@ NEXT-SESSION.md
 
 # dev signing key (stays on disk, never tracked)
 misc/private-key-dev.pem
+!app/tests/run.sh
+app/build/
+app/*.elf
+app/*.map
