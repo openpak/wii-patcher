@@ -27,16 +27,35 @@ resolves normally.
   **locally decrypted** SO module that you obtained from your own console or
   from NUS; no such binary is included.
 
-## Install model (later, not built here)
+## Repack + fakesign (`repack.py`)
 
-The patcher downloads the stock IOS from NUS, decrypts the SO content, derives
-the two per-binary offsets, bakes the verified suffix list + IP into the cave,
-writes an 8-byte trampoline over the resolver prologue, places the cave in the
-~2 KB gap before the data segment, extends the RX program header, re-hashes and
-fakesigns the title, and installs it in place (RiiConnect24 model). When the
-ceiling list changes the patcher re-applies through its normal update prompt.
-Scope: original Wii with a BootMii backup only -- not vWii, Wii mini, or
-new-boot1 consoles.
+`repack.py` is the proven step-1 chain: given the stock TMD/ticket and the
+decrypted SO content, it grows the RX `PT_LOAD` to map the cave, writes the
+trampoline, re-encrypts the content, updates the TMD content record, and
+fakesigns the TMD (trucha: zero the RSA signature, brute-force an unchecked pad
+until `SHA1(body)[0]==0`). It contains **no Nintendo bytes**: the Wii common
+key is read from `OPENPAK_WII_COMMON_KEY` (the patcher gets it on-console, from
+OTP on vWii), never embedded. It refuses any SO binary whose sha1 is not one of
+the two hooked targets. It assembles/installs nothing.
+
+## Install model + scope (installer not built here)
+
+The patcher derives the SO from the console's own IOS slot (vWii-exclusive
+builds are not on the open NUS), bakes the ceiling-verified suffix list + IP,
+applies the trampoline/cave, extends the RX program header, re-hashes and
+fakesigns, and installs **slot 36 only** in place (never IOS80 / System-Menu
+titles). Re-applies through the normal update prompt when the list changes.
+Restores the stock slot exactly on request. DNS stays the fallback.
+
+Scope: original Wii with a BootMii backup, and vWii (with a verified
+SLCCMPT+OTP backup gate). Wii mini and new-boot1 are refused.
+
+**vWii acceptance is UNPROVEN (gating).** vWii IOS have the trucha bug disabled
+and the System Menu runs stock IOS80, so whether a fakesigned in-place IOS36 is
+accepted at disc launch is undocumented and can only be settled by a hardware
+probe (see research/wii/on-console-redirect.md -> owner test steps). The
+release is HELD until that probe passes; until then vWii uses OpenPak DNS.
+Recovery is Wii U-side (vWii NAND Restorer / Decaffeinator), no BootMii needed.
 
 ## Proof (spike)
 
